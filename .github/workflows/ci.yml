@@ -48,10 +48,11 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Publish to npm
+        id: publish
         continue-on-error: true
         run: bun publish --access public
       - name: Publish to npm (fallback)
-        if: failure()
+        if: steps.publish.outcome == 'failure'
         run: |
           # "bun publish" does not support
           echo "\"bun publish\" failed, trying with \"npm publish\" as fallback"
