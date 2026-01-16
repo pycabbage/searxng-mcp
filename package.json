@@ -1,15 +1,26 @@
 {
   "name": "searxng-api-mcp",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "module": "src/index.ts",
   "type": "module",
-  "private": true,
   "bin": {
     "searxng-api-mcp": "src/index.ts"
   },
   "files": [
     "src"
   ],
+  "author": {
+    "name": "Cabbage Lettuce",
+    "email": "33714346+pycabbage@users.noreply.github.com",
+    "url": "https://github.com/pycabbage/"
+  },
+  "engines": {
+    "bun": ">=1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pycabbage/searxng-api-mcp"
+  },
   "scripts": {
     "lint": "biome check",
     "dev": "bun run src",
@@ -25,5 +36,8 @@
   },
   "peerDependencies": {
     "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
