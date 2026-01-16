@@ -48,7 +48,14 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Publish to npm
+        continue-on-error: true
         run: bun publish --access public
+      - name: Publish to npm (fallback)
+        if: failure()
+        run: |
+          # "bun publish" does not support
+          echo "\"bun publish\" failed, trying with \"npm publish\" as fallback"
+          bunx npm publish --access public
 
   release:
     name: Release
