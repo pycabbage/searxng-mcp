@@ -1,15 +1,21 @@
 # searxng-mcp
 
-To install dependencies:
+MCP server for SearXNG web search.
+
+## Setup
 
 ```bash
 bun install
 ```
 
-To run:
+## Usage
 
+Set environment variables:
 ```bash
-bunx 
+SEARXNG_SERVER=https://your-searxng-instance.com
 ```
 
-This project was created using `bun init` in bun v1.2.21. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+Run:
+```bash
+bun run dev
+```

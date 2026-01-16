@@ -51,12 +51,17 @@ jobs:
         id: publish
         continue-on-error: true
         run: bun publish --access public
+      - uses: actions/setup-node@v6
+        if: steps.publish.outcome == 'failure'
+        with:
+          node-version: "latest"
       - name: Publish to npm (fallback)
         if: steps.publish.outcome == 'failure'
         run: |
           # "bun publish" does not support
           echo "\"bun publish\" failed, trying with \"npm publish\" as fallback"
-          bunx npm publish --access public
+          npm --version
+          npm publish --access public
 
   release:
     name: Release
