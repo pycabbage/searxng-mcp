@@ -46,8 +46,8 @@ async function cli() {
       },
       help: {
         type: "boolean",
-        default: false
-      }
+        default: false,
+      },
     },
     strict: true,
     allowPositionals: false,

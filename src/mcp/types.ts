@@ -21,7 +21,12 @@ export const inputSchema = z.object({
       "Comma separated list, specifies the active search engines. Default: empty (all engines)."
     ),
   language: z.string().optional().describe("Code of the language."),
-  pageno: z.number().min(1).default(1).optional().describe("Search page number."),
+  pageno: z
+    .number()
+    .min(1)
+    .default(1)
+    .optional()
+    .describe("Search page number."),
   time_range: z
     .enum(["day", "month", "year"])
     .optional()
@@ -35,24 +40,25 @@ export const outputSchema = z.object({
   number_of_results: z.number().describe("Total number of results returned."),
   results: z
     .array(
-      z.object({
-        template: z.string(),
-        url: z.url(),
-        title: z.string(),
-        content: z.string(),
-        publishedDate: z.string().nullable(),
-        pubdate: z.string().nullish().optional(),
-        thumbnail: z.string(),
-        engine: z.string(),
-        parsed_url: z.array(z.string()).length(6),
-        img_src: z.string(),
-        priority: z.string(),
-        engines: z.array(z.string()),
-        positions: z.array(z.number()),
-        score: z.number(),
-        category: z.string(),
-      })
-      .strict()
+      z
+        .object({
+          template: z.string(),
+          url: z.url(),
+          title: z.string(),
+          content: z.string(),
+          publishedDate: z.string().nullable(),
+          pubdate: z.string().nullish().optional(),
+          thumbnail: z.string(),
+          engine: z.string(),
+          parsed_url: z.array(z.string()).length(6),
+          img_src: z.string(),
+          priority: z.string(),
+          engines: z.array(z.string()),
+          positions: z.array(z.number()),
+          score: z.number(),
+          category: z.string(),
+        })
+        .strict()
     )
     .describe("Array of search results."),
   answers: z.array(z.unknown()).describe("Direct answers to the query."),
@@ -61,40 +67,41 @@ export const outputSchema = z.object({
     .describe("Spelling corrections or suggestions."),
   infoboxes: z
     .array(
-      z.object({
-        infobox: z.string(),
-        id: z.string(),
-        content: z.string(),
-        img_src: z.string(),
-        urls: z.array(
-          z.object({
-            title: z.string(),
-            url: z.url(),
-            official: z.boolean().optional(),
-          })
-        ),
-        engine: z.string(),
-        url: z.string().nullable(),
-        template: z.string(),
-        parsed_url: z.null(),
-        title: z.string(),
-        thumbnail: z.string(),
-        priority: z.string(),
-        engines: z.array(z.string()),
-        positions: z.string(),
-        score: z.number(),
-        category: z.string(),
-        publishedDate: z.string().nullable(),
-        pubdate: z.string().nullish().optional(),
-        attributes: z.array(
-          z.object({
-            label: z.string(),
-            value: z.string(),
-            entity: z.string(),
-          })
-        ),
-      })
-      .strict()
+      z
+        .object({
+          infobox: z.string(),
+          id: z.string(),
+          content: z.string(),
+          img_src: z.string(),
+          urls: z.array(
+            z.object({
+              title: z.string(),
+              url: z.url(),
+              official: z.boolean().optional(),
+            })
+          ),
+          engine: z.string(),
+          url: z.string().nullable(),
+          template: z.string(),
+          parsed_url: z.null(),
+          title: z.string(),
+          thumbnail: z.string(),
+          priority: z.string(),
+          engines: z.array(z.string()),
+          positions: z.string(),
+          score: z.number(),
+          category: z.string(),
+          publishedDate: z.string().nullable(),
+          pubdate: z.string().nullish().optional(),
+          attributes: z.array(
+            z.object({
+              label: z.string(),
+              value: z.string(),
+              entity: z.string(),
+            })
+          ),
+        })
+        .strict()
     )
     .describe("Information boxes with structured data."),
   suggestions: z.array(z.string()).describe("Search suggestions."),

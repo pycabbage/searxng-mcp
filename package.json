@@ -7,7 +7,9 @@
   "bin": {
     "searxng-mcp": "src/index.ts"
   },
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "scripts": {
     "lint": "biome check",
     "dev": "bun run src",

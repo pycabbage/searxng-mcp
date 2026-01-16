@@ -1,7 +1,7 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import type { CliOptions } from ".."
-import { inputSchema, outputSchema } from "./types"
 import { search } from "../searxng"
+import { inputSchema, outputSchema } from "./types"
 
 export function registerSearchTool(server: McpServer, options: CliOptions) {
   server.registerTool(
@@ -30,8 +30,8 @@ export function registerSearchTool(server: McpServer, options: CliOptions) {
               audience: ["assistant", "user"],
               priority: 0.9,
               lastModified: new Date().toISOString(),
-            }
-          }
+            },
+          },
         ],
         structuredContent,
       }
